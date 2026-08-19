@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7fbff">
+  <meta name="description" content="Simple mortgage payment calculator for estimating monthly payments, total repayment, and total interest.">
+  <title>Mortgage Payment Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="brand-mark" aria-hidden="true">🏠</div>
+        <div>
+          <p class="eyebrow">HOME FINANCE</p>
+          <h1>Mortgage Payment Calculator</h1>
+          <p class="header-copy">Estimate your monthly mortgage payment in seconds.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="calculator-card" aria-labelledby="calculator-title">
+        <div class="section-header">
+          <div>
+            <p class="section-eyebrow">CALCULATOR</p>
+            <h2 id="calculator-title">Enter your loan details</h2>
+          </div>
+        </div>
+
+        <form id="mortgageForm" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="loanAmount">Loan amount</label>
+              <div class="input-wrap">
+                <span class="input-prefix" aria-hidden="true">$</span>
+                <input id="loanAmount" name="loanAmount" type="number" inputmode="decimal" min="1" step="1000" value="300000" required>
+              </div>
+              <p class="field-error" id="loanAmountError" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="interestRate">Annual interest rate</label>
+              <div class="input-wrap input-wrap-suffix">
+                <input id="interestRate" name="interestRate" type="number" inputmode="decimal" min="0" max="100" step="0.01" value="6.5" required>
+                <span class="input-suffix" aria-hidden="true">%</span>
+              </div>
+              <p class="field-error" id="interestRateError" aria-live="polite"></p>
+            </div>
+
+            <div class="field field-full">
+              <label for="loanTerm">Loan term</label>
+              <div class="input-wrap input-wrap-suffix">
+                <input id="loanTerm" name="loanTerm" type="number" inputmode="numeric" min="1" max="50" step="1" value="30" required>
+                <span class="input-suffix" aria-hidden="true">years</span>
+              </div>
+              <p class="field-error" id="loanTermError" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <button class="btn-primary" type="submit">Calculate Payment</button>
+        </form>
+      </section>
+
+      <section class="results-panel" id="resultsPanel" aria-labelledby="results-title" aria-live="polite">
+        <div class="results-hero">
+          <p class="section-eyebrow">ESTIMATED PAYMENT</p>
+          <h2 id="results-title">Monthly payment</h2>
+          <p class="monthly-payment" id="monthlyPayment">$1,896</p>
+          <p class="payment-note">Principal + interest</p>
+        </div>
+
+        <div class="summary-grid">
+          <article class="summary-card">
+            <span>Total repayment</span>
+            <strong id="totalPayment">$682,633</strong>
+          </article>
+          <article class="summary-card">
+            <span>Total interest</span>
+            <strong id="totalInterest">$382,633</strong>
+          </article>
+          <article class="summary-card">
+            <span>Number of payments</span>
+            <strong id="numberOfPayments">360</strong>
+          </article>
+        </div>
+      </section>
+
+      <p class="disclaimer">Estimate only. Taxes, insurance, HOA fees, and lender charges are not included.</p>
+    </main>
+
+    <footer class="app-footer">Simple tools for smarter decisions.</footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
