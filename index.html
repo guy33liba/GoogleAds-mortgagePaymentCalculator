@@ -3,105 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#d8eaff">
-  <meta name="description" content="Simple mortgage payment calculator for estimating monthly payments, total repayment, and total interest.">
+  <meta name="theme-color" content="#eef4ff">
+  <meta name="description" content="Estimate your monthly mortgage payment, total interest, and total repayment with a simple mobile-friendly calculator.">
   <title>Mortgage Payment Calculator</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="app-shell">
-    <header class="app-header">
-      <div class="header-inner">
-        <div class="brand-mark" aria-hidden="true">🏠</div>
-        <div>
-          <p class="eyebrow">HOME FINANCE</p>
-          <h1>Mortgage Payment Calculator</h1>
-          <p class="header-copy">Estimate your monthly mortgage payment in seconds.</p>
+<body id="app-body">
+  <div id="app-shell">
+    <header id="hero-section">
+      <div id="hero-content">
+        <div id="hero-icon" aria-hidden="true">🏠</div>
+        <div id="hero-copy">
+          <p id="hero-eyebrow">HOME FINANCE</p>
+          <h1 id="hero-title">Mortgage Payment Calculator</h1>
+          <p id="hero-subtitle">Plan smarter. Know your payment before you borrow.</p>
         </div>
+        <div id="hero-badge" aria-label="Plan your dream home"><span id="hero-badge-icon">♥</span><span id="hero-badge-text">Dream Home</span></div>
+      </div>
+      <div id="hero-benefits" aria-label="Calculator benefits">
+        <span id="benefit-simple">✓ Simple</span>
+        <span id="benefit-fast">✓ Fast</span>
+        <span id="benefit-clear">✓ Clear results</span>
       </div>
     </header>
 
-    <main class="main-content">
-      <aside class="ad-slot" aria-label="Advertisement space">
-        <span class="ad-label">Advertisement</span>
-        <div class="ad-placeholder">Ad space</div>
-      </aside>
-
-      <section class="calculator-card" aria-labelledby="calculator-title">
-        <div class="section-header">
-          <div>
-            <p class="section-eyebrow">CALCULATOR</p>
-            <h2 id="calculator-title">Enter your loan details</h2>
-          </div>
+    <main id="main-content">
+      <section id="calculator-card" aria-labelledby="calculator-title">
+        <div id="calculator-heading">
+          <p id="calculator-eyebrow">YOUR LOAN</p>
+          <h2 id="calculator-title">Enter your details</h2>
         </div>
 
         <form id="mortgageForm" novalidate>
-          <div class="form-grid">
-            <div class="field">
-              <label for="loanAmount">Loan amount</label>
-              <div class="input-wrap">
-                <span class="input-prefix" aria-hidden="true">$</span>
-                <input id="loanAmount" name="loanAmount" type="number" inputmode="decimal" min="1" step="1000" value="300000" required>
+          <div id="form-grid">
+            <div id="home-price-field">
+              <label id="home-price-label" for="homePrice">Home price</label>
+              <div id="home-price-input-row">
+                <span id="home-price-icon" aria-hidden="true">🏡</span>
+                <div id="home-price-input-box">
+                  <span id="home-price-prefix" aria-hidden="true">$</span>
+                  <input id="homePrice" name="homePrice" type="number" inputmode="decimal" min="10000" max="3000000" step="1000" value="300000" required>
+                </div>
               </div>
-              <p class="field-error" id="loanAmountError" aria-live="polite"></p>
+              <input id="homePriceRange" type="range" min="50000" max="1500000" step="5000" value="300000" aria-label="Home price slider">
+              <p id="homePriceError" class="field-error" aria-live="polite"></p>
             </div>
 
-            <div class="field">
-              <label for="interestRate">Annual interest rate</label>
-              <div class="input-wrap input-wrap-suffix">
-                <input id="interestRate" name="interestRate" type="number" inputmode="decimal" min="0" max="100" step="0.01" value="6.5" required>
-                <span class="input-suffix" aria-hidden="true">%</span>
+            <div id="down-payment-field">
+              <label id="down-payment-label" for="downPayment">Down payment</label>
+              <div id="down-payment-input-row">
+                <span id="down-payment-icon" aria-hidden="true">💰</span>
+                <div id="down-payment-input-box">
+                  <span id="down-payment-prefix" aria-hidden="true">$</span>
+                  <input id="downPayment" name="downPayment" type="number" inputmode="decimal" min="0" step="1000" value="60000" required>
+                </div>
+                <div id="down-payment-percent" aria-live="polite">20%</div>
               </div>
-              <p class="field-error" id="interestRateError" aria-live="polite"></p>
+              <input id="downPaymentRange" type="range" min="0" max="150000" step="1000" value="60000" aria-label="Down payment slider">
+              <p id="downPaymentError" class="field-error" aria-live="polite"></p>
             </div>
 
-            <div class="field field-full">
-              <label for="loanTerm">Loan term</label>
-              <div class="input-wrap input-wrap-suffix">
-                <input id="loanTerm" name="loanTerm" type="number" inputmode="numeric" min="1" max="50" step="1" value="30" required>
-                <span class="input-suffix" aria-hidden="true">years</span>
+            <div id="loan-term-field">
+              <label id="loan-term-label" for="loanTerm">Loan term</label>
+              <div id="loan-term-input-row">
+                <span id="loan-term-icon" aria-hidden="true">📅</span>
+                <div id="loan-term-input-box">
+                  <input id="loanTerm" name="loanTerm" type="number" inputmode="numeric" min="1" max="50" step="1" value="30" required>
+                  <span id="loan-term-suffix" aria-hidden="true">years</span>
+                </div>
               </div>
-              <p class="field-error" id="loanTermError" aria-live="polite"></p>
+              <input id="loanTermRange" type="range" min="5" max="40" step="5" value="30" aria-label="Loan term slider">
+              <p id="loanTermError" class="field-error" aria-live="polite"></p>
+            </div>
+
+            <div id="interest-rate-field">
+              <label id="interest-rate-label" for="interestRate">Interest rate (APR)</label>
+              <div id="interest-rate-input-row">
+                <span id="interest-rate-icon" aria-hidden="true">%</span>
+                <div id="interest-rate-input-box">
+                  <input id="interestRate" name="interestRate" type="number" inputmode="decimal" min="0" max="25" step="0.01" value="6.5" required>
+                  <span id="interest-rate-suffix" aria-hidden="true">%</span>
+                </div>
+              </div>
+              <input id="interestRateRange" type="range" min="0" max="15" step="0.05" value="6.5" aria-label="Interest rate slider">
+              <p id="interestRateError" class="field-error" aria-live="polite"></p>
             </div>
           </div>
 
-          <button class="btn-primary" type="submit">Calculate Payment</button>
+          <div id="loan-summary-line">
+            <span id="loan-summary-label">Estimated loan</span>
+            <strong id="loanAmountPreview">$240,000</strong>
+          </div>
+
+          <button id="calculate-button" type="submit"><span id="calculate-icon" aria-hidden="true">▦</span><span id="calculate-label">Calculate Payment</span><span id="calculate-arrow" aria-hidden="true">›</span></button>
         </form>
       </section>
 
-      <section class="results-panel" id="resultsPanel" aria-labelledby="results-title" aria-live="polite">
-        <div class="results-hero">
-          <p class="section-eyebrow">ESTIMATED PAYMENT</p>
-          <h2 id="results-title">Monthly payment</h2>
-          <p class="monthly-payment" id="monthlyPayment">$1,896</p>
-          <p class="payment-note">Principal + interest</p>
+      <section id="resultsPanel" aria-labelledby="results-title" aria-live="polite">
+        <div id="results-main">
+          <div id="results-heading">
+            <p id="results-eyebrow">ESTIMATED MONTHLY PAYMENT</p>
+            <h2 id="results-title">Monthly payment</h2>
+          </div>
+          <p id="monthlyPayment">$1,517</p>
+          <p id="payment-note">Principal + interest</p>
         </div>
 
-        <div class="summary-grid">
-          <article class="summary-card">
-            <span>Total repayment</span>
-            <strong id="totalPayment">$682,633</strong>
+        <div id="results-stats">
+          <article id="principal-card">
+            <span id="principal-label">Loan amount</span>
+            <strong id="principalAmount">$240,000</strong>
           </article>
-          <article class="summary-card">
-            <span>Total interest</span>
-            <strong id="totalInterest">$382,633</strong>
+          <article id="interest-card">
+            <span id="interest-label">Total interest</span>
+            <strong id="totalInterest">$306,840</strong>
           </article>
-          <article class="summary-card">
-            <span>Number of payments</span>
+          <article id="total-card">
+            <span id="total-label">Total payment</span>
+            <strong id="totalPayment">$546,840</strong>
+          </article>
+          <article id="payments-card">
+            <span id="payments-label">Payments</span>
             <strong id="numberOfPayments">360</strong>
           </article>
         </div>
       </section>
 
-      <p class="disclaimer">Estimate only. Taxes, insurance, HOA fees, and lender charges are not included.</p>
-
-      <aside class="ad-slot ad-slot-bottom" aria-label="Advertisement space">
-        <span class="ad-label">Advertisement</span>
-        <div class="ad-placeholder">Ad space</div>
+      <aside id="main-ad-slot" aria-label="Advertisement">
+        <span id="ad-label">Advertisement</span>
+        <div id="ad-placeholder">Ad space</div>
       </aside>
+
+      <section id="planning-note" aria-label="Planning note">
+        <span id="planning-icon" aria-hidden="true">🌱</span>
+        <div id="planning-copy"><strong id="planning-title">A smarter plan starts with the numbers.</strong><span id="planning-text">Taxes, insurance and HOA fees are not included.</span></div>
+      </section>
     </main>
 
-    <footer class="app-footer">Simple tools for smarter decisions.</footer>
+    <footer id="app-footer">Mortgage estimate only — not a lender quote.</footer>
   </div>
 
   <script src="app.js"></script>
